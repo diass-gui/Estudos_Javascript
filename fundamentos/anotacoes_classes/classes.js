@@ -196,7 +196,7 @@ conta1.saldo;
 
 // Exercício 5: Setter
 // vou usar esse espaço para testar.
-conta1.saldo(50.00);
+conta1.saldo = 50.00;
 
 // Resposta correta - Exercício 5
 conta1.saldo = 50.00;
@@ -213,13 +213,13 @@ class Calculadora {
         this._b = b;
     }
 
-    somar() {
+    somar(a, b) {
         return a + b;
     }
 }
 
 const calc1 = new Calculadora(10, 20);
-calc1.somar();
+calc1.somar(10, 20);
 
 // Resposta correta - Exercício 6
 // somar() {
@@ -293,17 +293,3 @@ const f1 = new Funcionario("Guilherme", 1000.0);
 const g1 = new Gerente("Guilherme", 2000.0, "Tributação");
 
 
-// Anotações - Static
-// Como utilizar:
-class MinhaClasse {
-    static variavel = 10;
-
-    static metodo() {
-        // ...Alguma lógica
-        console.log('Chamou o método');
-
-    }
-}
-
-console.log(MinhaClasse.variavel);
-console.log(MinhaClasse.metodo());
