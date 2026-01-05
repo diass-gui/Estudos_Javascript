@@ -1,0 +1,1 @@
+export const mensagem = "Olá, Módulos do Javascript!";
