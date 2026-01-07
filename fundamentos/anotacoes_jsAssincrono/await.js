@@ -1,4 +1,7 @@
-// Promises
+// Promises com async/await
+
+const axios = require('axios');
+
 const loginUser = (email, password) => {
     return new Promise((resolve, reject) => {
         const error = false;
@@ -30,25 +33,24 @@ const getVideoDetails = (video) => {
     }) 
 }
 
-loginUser('felipe@gmail.com', '765432')
-.then((user) => getUserVideos(user.email))
-.then((videos) => getVideoDetails(videos[0]))
-.catch((error) => console.log({ error }))
+const displayUser = async () => {
+    try {
+        const user = await loginUser('bigode@gmail.com', '1324756');
+        console.log({ user })
+        const videos = await getUserVideos(user.email);
+        console.log({ videos })
+        const videoDetails = await getVideoDetails(videos[0]);
+        console.log({ videoDetails })
+    } catch(error) {
+        console.log(error)
+    }
+}
 
+// displayUser();
 
-// Promise.all
-const yt = new Promise(resolve => {
-    setTimeout(() => {
-        resolve('videos from youtube')
-    }, 2000)
-})
+const fetchAPI = async () => {
+    const { data } = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+    console.log({ data }) 
+}
 
-const fb = new Promise(resolve => {
-    setTimeout(() => {
-        resolve('posts from facebook')
-    }, 3000)
-})
-
-Promise.all([yt, fb]).then(result => {
-    console.log({ result })
-})
+fetchAPI()
